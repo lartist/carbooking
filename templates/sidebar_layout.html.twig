@@ -16,18 +16,20 @@
             </div>
             <div class="sidebar-menu">
                 <ul class="menu">
-                    {#<li class="sidebar-item">
+                    <li class="sidebar-item">
                         <a href="{{ path('dashboard') }}" class='sidebar-link'>
                             <i class="bi bi-grid-fill"></i>
-                            <span>{{ 'app.template.layout.sidebar.dashboard_label'|trans }}</span>
+                            <span>Accueil</span>
                         </a>
                     </li>
-                    <li class="sidebar-item">
-                        <a href="{{ path('transaction_list') }}" class='sidebar-link'>
-                            <i class="bi bi-bank"></i>
-                            <span>{{ 'app.template.layout.sidebar.account_label'|trans }}</span>
-                        </a>
-                    </li>#}
+                    {% if is_granted('ROLE_ADMIN') %}
+                        <li class="sidebar-item">
+                            <a href="{{ path('app_car_index') }}" class='sidebar-link'>
+                                <i class="bi bi-bank"></i>
+                                <span>Voiture</span>
+                            </a>
+                        </li>
+                    {% endif %}
 
                 </ul>
             </div>

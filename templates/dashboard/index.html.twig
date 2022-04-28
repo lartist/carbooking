@@ -6,7 +6,27 @@
 {% block content %}
     <div class="card">
         <div class="card-body">
-            Hello
+            <div class="row">
+            {% for car in cars %}
+                <div class="col-xl-4 col-md-6 col-sm-12">
+                    <div class="card">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h4 class="card-title">{{ car.name }}</h4>
+                                <p class="card-text">
+                                    {{ car.fuelType }}
+                                </p>
+                            </div>
+                            <img class="img-fluid w-100" src="https://edgepharm.com/wp-content/uploads/2020/01/image-placeholder.jpg" alt="Card image cap">
+                        </div>
+                        <div class="card-footer d-flex justify-content-between">
+                            <span>Card Footer</span>
+                            <button class="btn btn-light-primary">Read More</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
         </div>
     </div>
 {% endblock %}
