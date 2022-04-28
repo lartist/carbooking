@@ -1,0 +1,43 @@
+{% extends 'auth_layout.html.twig' %}
+
+{# todo: translate #}
+{% set pageTitle = 'Register' %}
+{% set h1 = 'Register' %}
+{% set subtitle = 'Register' %}
+
+{% block form %}
+
+    {{ form_start(registrationForm) }}
+
+        <div class="form-group position-relative has-icon-left mb-4">
+            {{ form_errors(registrationForm.email) }}
+            {{ form_widget(registrationForm.email, {attr: {class: 'form-control-xl', placeholder: 'Email'}}) }}
+            <div class="form-control-icon">
+                <i class="bi bi-envelope"></i>
+            </div>
+        </div>
+        <div class="form-group position-relative has-icon-left mb-4">
+            {{ form_errors(registrationForm.plainPassword) }}
+            {{ form_widget(registrationForm.plainPassword, {
+                attr : {
+                    class: 'form-control-xl',
+                    placeholder: 'Password'
+                }
+            }) }}
+            <div class="form-control-icon">
+                <i class="bi bi-shield-lock"></i>
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Sign Up</button>
+    {{ form_end(registrationForm) }}
+
+{% endblock %}
+
+
+{% block afterForm %}
+    <p class='text-gray-600'>
+        Already have an account?
+        <a href="{{ path('app_login') }}" class="font-bold">Log in</a>.
+    </p>
+{% endblock %}
