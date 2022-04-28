@@ -5,6 +5,26 @@
 
 {% block content %}
     <div class="card">
+        <div class="car-body">
+            <table class="table">
+                <thead>
+                    <th>Voitured</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </thead>
+                {% for carBooking in carBookings %}
+                    <tr>
+                        <td>{{ carBooking.car.name }}</td>
+                        <td>{{ carBooking.date|date('d-m-Y') }}</td>
+                        <td>
+                            {{ include('car_booking/_delete_form.html.twig') }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+    <div class="card">
         <div class="card-body">
             <div class="row">
             {% for car in cars %}
@@ -21,7 +41,7 @@
                         </div>
                         <div class="card-footer d-flex justify-content-between">
                             <span>Card Footer</span>
-                            <button class="btn btn-light-primary">Read More</button>
+                            <a href="{{ path('app_car_booking_new', {id: car.id}) }}" class="btn btn-light-primary">Read More</a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,34 @@
+{% extends 'sidebar_layout.html.twig' %}
+
+{% set pageTitle = 'template.dashboard.page_title'|trans %}
+{% set h1 = 'template.dashboard.h1'|trans %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>User</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for car_booking in car_bookings %}
+                <tr>
+                    <td>{{ car_booking.car.name }}</td>
+                    <td>{{ car_booking.date ? car_booking.date|date('Y-m-d') : '' }}</td>
+                    <td>{{ car_booking.user.userIdentifier }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+{% endblock %}
