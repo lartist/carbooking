@@ -1,0 +1,15 @@
+{% extends 'auth_layout.html.twig' %}
+
+{% set pageTitle = 'Demande de réinitialistion envoyée' %}
+{% set h1 = 'Un mail vous a été envoyé' %}
+{% set subtitle = '' %}
+
+{% block form %}
+
+    <p>
+        Si un compte à cette adresse existe, alors une email avec un lien de réinitialisation vient juste d'être envoyé.
+        Ce lien expirera dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
+    </p>
+    <p>Si vous ne l'avez pas reçu, merci de vérifier vos spam ou <a href="{{ path('app_forgot_password_request') }}">essayez à nouveau</a>.</p>
+
+{% endblock %}

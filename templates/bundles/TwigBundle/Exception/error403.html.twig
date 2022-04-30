@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% set pageTitle = '403' %}
+{% block body %}
+    <div id="error">
+
+
+        <div class="error-page container">
+            <div class="col-md-8 col-12 offset-md-2">
+                <img class="img-error" src="{{ asset('build/samples/error-403.png') }}" alt="{{ 'templates.bundles.twig_bundle.exception.403.img_alt'|trans }}">
+                <div class="text-center">
+                    <h1 class="error-title">{{ 'templates.bundles.twig_bundle.exception.403.h1'|trans }}</h1>
+                    <p class="fs-5 text-gray-600">You are unauthorized to see this page.</p>
+                    <a href="{{ path(constant('App\\Controller\\AbstractController::HOME_ROUTE_NAME')) }}" class="btn btn-lg btn-outline-primary mt-3">
+                        {{ 'templates.bundles.twig_bundle.exception.403.go_home_button_label'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

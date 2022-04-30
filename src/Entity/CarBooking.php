@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use App\Repository\CarBookingRepository;
+use App\Validator\AvailableCarBookingDate;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: CarBookingRepository::class)]
+#[AvailableCarBookingDate]
 class CarBooking
 {
     #[ORM\Id]
@@ -22,6 +25,7 @@ class CarBooking
     private $car;
 
     #[ORM\Column(type: 'date')]
+    #[NotBlank]
     private $date;
 
     public function getId(): ?int
@@ -58,7 +62,7 @@ class CarBooking
         return $this->date;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setDate(?\DateTimeInterface $date): self
     {
         $this->date = $date;
 

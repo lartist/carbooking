@@ -1,7 +1,7 @@
 {% extends 'sidebar_layout.html.twig' %}
 
-{% set pageTitle = 'template.dashboard.page_title'|trans %}
-{% set h1 = 'template.dashboard.h1'|trans %}
+{% set pageTitle = 'template.car_booking.index.page_title'|trans %}
+{% set h1 = 'template.car_booking.index.h1'|trans %}
 
 {% block content %}
 <div class="card">
@@ -9,9 +9,9 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>User</th>
+                    <th>{{ 'entity.car_booking.property.car'|trans }}</th>
+                    <th>{{ 'entity.car_booking.property.date_range'|trans }}</th>
+                    <th>{{ 'entity.car_booking.property.user'|trans }}</th>
                 </tr>
             </thead>
             <tbody>
@@ -23,7 +23,7 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="3">no records found</td>
+                    <td colspan="3"><th>{{ 'common.table.no_record_found'|trans }}</th></td>
                 </tr>
             {% endfor %}
             </tbody>

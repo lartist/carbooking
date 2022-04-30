@@ -1,0 +1,106 @@
+flash:
+    car_booked: 'La réservation a été effectuée avec succès'
+    car_booking_deleted: 'Votre annulation de réservation a bien été prise en compte'
+    car_created: 'La voiture a bien été ajoutée'
+    car_updated: 'La voiture a bien été mise à jour'
+    car_deleted: 'La voiture a bien été supprimée'
+email:
+    verify_email:
+        subject: 'Confirmation d'' adresse mail'
+templates:
+    layout:
+        logo: Logo
+        menu:
+            dashboard: Accueil
+            car: Voiture
+            car_booking: Réservation
+        flash_message_close_aria_label: Boutton de fermeture
+        logout: Déconnexion
+    registration:
+        register:
+
+            page_title: Création de compte
+            h1: Créer un compte
+            subtitle: Inscrivez vous pour pouvoir louer des voitures
+            sign_up: C'est partis!
+            already_have_account_question: Vous avez déjà un compte?
+            login: Connectez-vous
+    auth_layout:
+        logo_alt: Logo
+    security:
+        login:
+            page_title: Connexion
+            h1: Connexion
+            subtitle: Entrez vos identifiants
+            login: Connexion
+            forgot_password_question: Mot de passe oublié?
+    security•login:
+        click_here: Cliquez ici
+    dashboard:
+        index:
+            car_img_alt: Image de voiture
+            car_card_read_more: Voir
+    bundles:
+        twig_bundle:
+            exception:
+                500:
+                    img_alt: Image erreur 500
+                    h1: Erreur interne
+                    go_home_button_label: Page d'accueil
+                403:
+                    img_alt: Image accès interdit
+                    h1: Accès interdit
+                    go_home_button_label: Page d'accueil
+                404:
+                    img_alt: Image page non trouvée
+                    h1: Page non trouvée
+                    go_home_button_label: Page d'accueil
+    car:
+        edit:
+            page_title: Modifier une voiture
+            h1: Modifier une voiture
+common:
+    action:
+        confirm_delete: Etes-vous sûr de vouloir supprimer cette élément?
+        delete: Suppimer
+        create: Créer
+        update: Modifier
+        save: Enregistrer
+    table:
+        no_record_found: Aucun résultat trouvé
+template:
+    car_booking:
+        new:
+            page_title: Nouvelle réservation
+            h1: Réserver une voiture
+        index:
+            page_title: Réservations
+            h1: Toutes les réservations
+    car:
+        new:
+            page_title: Ajout de voiture
+            h1: Ajouter une voiture
+        index:
+            page_title: Liste des voitures
+            h1: Liste des voitures
+    dashboard:
+        page_title: Dashboard
+        h1: Accueil
+        car_booking_list:
+            header_title: Liste de vos locations
+entity:
+
+    car_booking:
+        property:
+            date: Date de réservation
+            car: Voiture
+            date_range: Dates
+            user: Loueur
+    user:
+        property:
+            email: Email
+            password: Mot de passe
+    car:
+        property:
+            name: Nom
+            fuel_type: Type de carburant

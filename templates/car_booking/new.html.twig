@@ -1,15 +1,23 @@
 {% extends 'sidebar_layout.html.twig' %}
 
-{% set pageTitle = 'template.dashboard.page_title'|trans %}
-{% set h1 = 'template.dashboard.h1'|trans %}
+{% set pageTitle = 'template.car_booking.new.page_title' %}
+{% set h1 = 'template.car_booking.new.h1'|trans %}
 
 {% block content %}
 <div class="card">
     <div class="card-body">
+        <div
+            id="unavailable-dates"
+            data-dates="{{
+                unavailable_car_bookings
+                |map(car_booking => car_booking.date|date('Y-m-d'))
+                |serialize
+            }}"
+        >
 
+        </div>
+        <h2>Choisissez une date de résevation pour le véhicule {{ car.name }}</h2>
         {{ include('car_booking/_form.html.twig') }}
-
-        <a href="{{ path('app_car_booking_index') }}">back to list</a>
     </div>
 </div>
 {% endblock %}

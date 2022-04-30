@@ -7,18 +7,15 @@ install: ## Install symfony project (dev)
 	composer install
 	make build_assets
 	make build
-	#php bin/console lexik:jwt:generate-keypair
 
 reinstall: ## Reinstall symfony project (dev)
 	composer install
 	make build_assets
 	make rebuild
-	#php bin/console lexik:jwt:generate-keypair
 
 rebuild: ## Rebuild database (dev)
 	php bin/console doctrine:database:drop --force
 	make build
-	#rm -rf data
 
 build: ## Build database (dev)
 	php bin/console doctrine:database:create
@@ -28,17 +25,15 @@ build: ## Build database (dev)
 build_assets: ## build assets (dev)
 	yarn install
 	yarn encore dev
-	#php bin/console fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json
 
-code_quality: ## scan code for quality
-	vendor/bin/php-cs-fixer fix --diff --verbose
-	vendor/bin/phpstan analyse src tests -l max
 docker-build:
 	docker compose build --pull --no-cache
 start:
 	docker compose up --remove-orphans -d
+	symfony serve
 
 stop:
+	symfony server:stop
 	docker compose stop
 
 trans:

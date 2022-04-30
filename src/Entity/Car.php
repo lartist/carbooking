@@ -2,23 +2,39 @@
 
 namespace App\Entity;
 
+use App\Enum\FuelType;
 use App\Repository\CarRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints\Choice;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 #[ORM\Entity(repositoryClass: CarRepository::class)]
+#[UniqueEntity(fields: ['name'])]
 class Car
 {
+    const GAZOLE = 'gazole';
+    const ESSENCE = 'essence';
+
+    const FUEL_TYPES = [
+        self::GAZOLE,
+        self::ESSENCE
+    ];
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[NotBlank]
     private $name;
 
     #[ORM\Column(type: 'string', length: 255)]
+    #[NotBlank]
+    #[Choice(choices: self::FUEL_TYPES)]
     private $fuelType;
 
     #[ORM\OneToMany(mappedBy: 'car', targetEntity: CarBooking::class, orphanRemoval: true)]
@@ -39,7 +55,7 @@ class Car
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -51,7 +67,7 @@ class Car
         return $this->fuelType;
     }
 
-    public function setFuelType(string $fuelType): self
+    public function setFuelType(?string $fuelType): self
     {
         $this->fuelType = $fuelType;
 

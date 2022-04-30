@@ -1,9 +1,8 @@
 {% extends 'auth_layout.html.twig' %}
 
-{# todo: translate #}
-{% set pageTitle = 'Login' %}
-{% set h1 = 'Login' %}
-{% set subtitle = 'Login' %}
+{% set pageTitle = 'templates.security.login.page_title' %}
+{% set h1 = 'templates.security.login.h1' %}
+{% set subtitle = 'templates.security.login.subtitle' %}
 
 {% block form %}
 <form method="post">
@@ -11,21 +10,15 @@
         <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
     {% endif %}
 
-    {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
-    {% endif %}
-
     <div class="form-group position-relative has-icon-left mb-4">
-        <input type="email" value="{{ last_username }}" name="email" class="form-control form-control-xl" autocomplete="Email" required autofocus placeholder="email">
+        <input type="email" value="{{ last_username }}" name="email" class="form-control form-control-xl" autocomplete="Email" required autofocus placeholder="{{ 'entity.user.property.email'|trans }}">
         <div class="form-control-icon">
             <i class="bi bi-envelope"></i>
         </div>
     </div>
 
     <div class="form-group position-relative has-icon-left mb-4">
-        <input type="password" name="password" class="form-control form-control-xl" autocomplete="current-password" required placeholder="Password">
+        <input type="password" name="password" class="form-control form-control-xl" autocomplete="current-password" required placeholder="{{ 'entity.user.property.password'|trans }}">
         <div class="form-control-icon">
             <i class="bi bi-shield-lock"></i>
         </div>
@@ -34,14 +27,13 @@
     <input type="hidden" name="_csrf_token"
            value="{{ csrf_token('authenticate') }}"
     >
-    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+    <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">{{ 'templates.security.login.login'|trans }}</button>
 </form>
 {% endblock %}
 
-{# todo: forget password #}
 {% block afterForm %}
     <p class='text-gray-600'>
-        Forgot passowrd?
-        <a href="{{ path('app_login') }}" class="font-bold">click here</a>.
+        {{ 'templates.security.login.forgot_password_question'|trans }}
+        <a href="{{ path('app_forgot_password_request') }}" class="font-bold">{{ 'templates.security•login.click_here'|trans }}</a>.
     </p>
 {% endblock %}

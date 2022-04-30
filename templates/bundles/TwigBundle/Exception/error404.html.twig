@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+{% set pageTitle = '404' %}a
+{% block body %}
+    <div id="error">
+
+
+        <div class="error-page container">
+            <div class="col-md-8 col-12 offset-md-2">
+                <div class="text-center">
+                <img class="img-error" src="{{ asset('build/samples/error-404.png') }}" alt="{{ 'templates.bundles.twig_bundle.exception.404.img_alt'|trans }}">
+                    <h1 class="error-title">{{ 'templates.bundles.twig_bundle.exception.404.h1'|trans }}</h1>
+                    <p class='fs-5 text-gray-600'>The page you are looking not found.</p>
+                    <a href="{{ path(constant('App\\Controller\\AbstractController::HOME_ROUTE_NAME')) }}" class="btn btn-lg btn-outline-primary mt-3">
+                        {{ 'templates.bundles.twig_bundle.exception.404.go_home_button_label'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}

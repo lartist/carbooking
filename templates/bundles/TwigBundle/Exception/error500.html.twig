@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+{% set pageTitle = '404' %}
+{% block body %}
+    <div id="error">
+
+
+        <div class="error-page container">
+            <div class="col-md-8 col-12 offset-md-2">
+                <img class="img-error" src="{{ asset('build/samples/error-500.png') }}" alt="{{ 'templates.bundles.twig_bundle.exception.500.img_alt'|trans }}">
+                <div class="text-center">
+                    <h1 class="error-title">{{ 'templates.bundles.twig_bundle.exception.500.h1'|trans }}</h1>
+                    <p class="fs-5 text-gray-600">The website is currently unaivailable. Try again later or contact the
+                        developer.</p>
+                    <a href="{{ path(constant('App\\Controller\\AbstractController::HOME_ROUTE_NAME')) }}" class="btn btn-lg btn-outline-primary mt-3">
+                        {{ 'templates.bundles.twig_bundle.exception.500.go_home_button_label'|trans }}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+{% endblock %}
+

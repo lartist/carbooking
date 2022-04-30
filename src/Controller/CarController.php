@@ -1,14 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Controller;
 
 use App\Entity\Car;
 use App\Form\CarType;
 use App\Repository\CarRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route('/car')]
 class CarController extends AbstractController
@@ -22,7 +24,7 @@ class CarController extends AbstractController
     }
 
     #[Route('/new', name: 'app_car_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CarRepository $carRepository): Response
+    public function new(Request $request, CarRepository $carRepository, TranslatorInterface $translator): Response
     {
         $car = new Car();
         $form = $this->createForm(CarType::class, $car);
@@ -30,6 +32,8 @@ class CarController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $carRepository->add($car);
+
+            $this->addFlash(self::SUCCESS, $translator->trans('flash.car_created'));
             return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -39,22 +43,15 @@ class CarController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_car_show', methods: ['GET'])]
-    public function show(Car $car): Response
-    {
-        return $this->render('car/show.html.twig', [
-            'car' => $car,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'app_car_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Car $car, CarRepository $carRepository): Response
+    public function edit(Request $request, Car $car, CarRepository $carRepository, TranslatorInterface $translator): Response
     {
         $form = $this->createForm(CarType::class, $car);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $carRepository->add($car);
+            $this->addFlash(self::SUCCESS, $translator->trans('flash.car_updated'));
             return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -65,10 +62,11 @@ class CarController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_car_delete', methods: ['POST'])]
-    public function delete(Request $request, Car $car, CarRepository $carRepository): Response
+    public function delete(Request $request, Car $car, CarRepository $carRepository, TranslatorInterface $translator): Response
     {
         if ($this->isCsrfTokenValid('delete'.$car->getId(), $request->request->get('_token'))) {
             $carRepository->remove($car);
+            $this->addFlash(self::SUCCESS, $translator->trans('flash.car_deleted'));
         }
 
         return $this->redirectToRoute('app_car_index', [], Response::HTTP_SEE_OTHER);

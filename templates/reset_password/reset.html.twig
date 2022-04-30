@@ -1,0 +1,15 @@
+{% extends 'auth_layout.html.twig' %}
+
+{% set pageTitle = 'Nouveau mot de passe' %}
+{% set h1 = 'Nouveau mot de passe' %}
+{% set subtitle = 'Merci de renseigner votre nouveau mot de passe.' %}
+
+{% block form %}
+
+    {{ form_start(resetForm) }}
+        {{ form_row(resetForm.plainPassword) }}
+        <button class="btn btn-primary">Réinitialisation</button>
+    {{ form_end(resetForm) }}
+
+{% endblock %}
+

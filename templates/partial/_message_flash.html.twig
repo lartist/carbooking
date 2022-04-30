@@ -1,0 +1,9 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-light-{{ label }} color-{{ label }} alert-dismissible show fade">
+            <i class="bi bi-exclamation-circle"></i>
+            {{ message|trans }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="{{ 'templates.layout.flash_message_close_aria_label'|trans }}"></button>
+        </div>
+    {% endfor %}
+{% endfor %}

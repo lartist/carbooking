@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use App\Entity\Car;
 use App\Entity\CarBooking;
+use DateTime;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\OptimisticLockException;
 use Doctrine\ORM\ORMException;
@@ -75,4 +77,13 @@ class CarBookingRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findAllWithCar()
+    {
+        return $this->createQueryBuilder('cb')
+            ->leftJoin('cb.car', 'c')
+            ->addSelect('c')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

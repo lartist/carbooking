@@ -11,7 +11,7 @@ class AbstractController extends BaseAbstractController
 {
     public const SUCCESS = 'success';
     public const ERROR = 'error';
-    public const HOME_ROUTE_NAME = 'dashboard';
+    public const HOME_ROUTE_NAME = 'app_dashboard';
 
     public function redirectToReferer(Request $request) {
 

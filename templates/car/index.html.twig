@@ -1,7 +1,7 @@
 {% extends 'sidebar_layout.html.twig' %}
 
-{% set pageTitle = 'template.dashboard.page_title'|trans %}
-{% set h1 = 'template.dashboard.h1'|trans %}
+{% set pageTitle = 'template.car.index.page_title' %}
+{% set h1 = 'template.car.index.h1'|trans %}
 
 {% block content %}
 
@@ -9,33 +9,26 @@
         <div class="card-body">
             <table class="table">
                 <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Name</th>
-                    <th>FuelType</th>
-                    <th>actions</th>
-                </tr>
+                    <tr>
+                        <th>{{ 'entity.car.property.name'|trans }}</th>
+                        <th>{{ 'entity.car.property.fuel_type'|trans }}</th>
+                    </tr>
                 </thead>
                 <tbody>
                 {% for car in cars %}
                     <tr>
-                        <td>{{ car.id }}</td>
-                        <td>{{ car.name }}</td>
+                        <td><a href="{{ path('app_car_edit', {'id': car.id}) }}">{{ car.name }}</a></td>
                         <td>{{ car.fuelType }}</td>
-                        <td>
-                            <a href="{{ path('app_car_show', {'id': car.id}) }}">show</a>
-                            <a href="{{ path('app_car_edit', {'id': car.id}) }}">edit</a>
-                        </td>
                     </tr>
                 {% else %}
                     <tr>
-                        <td colspan="4">no records found</td>
+                        <td colspan="2">{{ 'common.table.no_record_found'|trans }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
 
-            <a href="{{ path('app_car_new') }}">Create new</a>
+            <a class="btn btn-primary" href="{{ path('app_car_new') }}">{{ 'common.action.create'|trans }}</a>
         </div>
     </div>
 {% endblock %}

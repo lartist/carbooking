@@ -45,6 +45,7 @@
 
 @import "bootstrap/scss/bootstrap";
 @import "perfect-scrollbar";
+@import "bootstrap-datepicker/dist/css/bootstrap-datepicker3.css";
 @import "bootstrap-icons/font/bootstrap-icons.scss";
 
 // 2. Bootstrap Components Override
@@ -107,3 +108,4 @@
 @import "./layouts/main.scss";
 @import "./utilities";
 @import "./pages/auth.scss";
+@import "./pages/error.scss";
