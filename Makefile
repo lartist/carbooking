@@ -28,6 +28,7 @@ build_assets: ## build assets (dev)
 
 docker-build:
 	docker compose build --pull --no-cache
+
 start:
 	docker compose up --remove-orphans -d
 	symfony serve

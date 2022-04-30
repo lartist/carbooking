@@ -1,21 +1,22 @@
 #Required stack
 1. php 8.1
-2. mysql 5.7
-3. symfony cli (optional)
+2. symfony cli (optional)
+3. docker
+4. composer
+5. yarn
 
-# Environment variable
+#Environment variable
 Use default ones in .env or create .env.local and override as you need
 Don't forget to configure a valid MAILER_DSN so that you can receive automatic emails.
 
 #Installation
-1. Clone the project
-2. Run composer install
-3. yarn install
-4. yarn encore prod
-5. bin/console doctrine:database:create
-6. bin/console doctrine:migrations:migrate
-7. bin/console doctrine:fixtures:load --no-interaction --append
-8. symfony run
+1. Run composer install
+2. yarn install
+3. yarn encore prod
+4. docker compose up --remove-orphans -d
+5. bin/console doctrine:migrations:migrate
+6. bin/console doctrine:fixtures:load --no-interaction --append
+7. symfony serve
 
 #Default user account
 Since you ran fixtures command you can log in as (user/password)
